@@ -37,6 +37,7 @@ a price was found in the dictionary.
 When executed, Python points to the first invalid syntax error it came
 upon, even though there are two more errors along the way. The first
 error message looks like this:
+![](/images/syntax_error_1.png)
 
 Information in the yellow box helps us determine the location of the
 error, and the green box includes more details about the error itself.
@@ -62,6 +63,7 @@ prices = {"price1": 9.99, "price2": 13.48, "price3": 10.99, "price4": 15.01}
 ```
 
 Now, rerun the code to see what’s the second syntax error:
+![](/images/syntax_error_2.png)
 
 This time, the carets fail to pinpoint the exact location of the error,
 and the `SyntaxError` message doesn’t include additional information
