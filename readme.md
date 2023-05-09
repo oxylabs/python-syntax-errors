@@ -69,7 +69,7 @@ and the `SyntaxError` message doesn’t include additional information
 about the possible solution. In such cases, the rule of thumb would be
 to examine the code that comes just before the carets. In the code
 sample, the syntax error is raised because there’s a missing comma
-between the variables `key\` and `value` in the `for` loop. The
+between the variables `key` and `value` in the `for` loop. The
 syntactically correct code ine should look like this:
 
 ```python
