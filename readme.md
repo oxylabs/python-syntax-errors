@@ -20,24 +20,14 @@ time and effort. So let’s examine a Python web scraping code sample that
 raises two syntax errors:
 
 ```python
-
-prices = {"price1": 9.99, "price2": 13.48 "price3": 10.99, "price4":
-15.01}
-
+prices = {"price1": 9.99, "price2": 13.48 "price3": 10.99, "price4": 15.01}
 price_found = False
-
 for key value in prices.items():
-
-if 10 \<= value \<= 14.99:
-
-print(key + ":", value)
-
-price_found = True
-
+    if 10 <= value <= 14.99:
+        print(key + ":", value)
+        price_found = True
 if not price_found:
-
-print("There are no prices between \$10 and \$14.99")
-
+    print("There are no prices between $10 and $14.99")
 ```
 
 In this example, we have a dictionary of different `prices`. We use a
@@ -69,10 +59,7 @@ items in our dictionary. That’s exactly it! The Python interpreter
 suggested the correct solution, so let’s update the code:
 
 ```python
-
-prices = {"price1": 9.99, "price2": 13.48, "price3": 10.99, "price4":
-15.01}
-
+prices = {"price1": 9.99, "price2": 13.48, "price3": 10.99, "price4": 15.01}
 ```
 
 Now, rerun the code to see what’s the second syntax error:
@@ -86,9 +73,7 @@ between the variables `key\` and `value` in the `for` loop. The
 syntactically correct code ine should look like this:
 
 ```python
-
 for key, value in prices.items():
-
 ```
 
 ## How to fix syntax errors
@@ -98,43 +83,25 @@ for key, value in prices.items():
 1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends a set of[<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping) instructions to our [<u>Web Crawler tool</u>](https://oxylabs.io/features/web-crawler):
 
 ```python
-
 payload = {
-
-"url": "https://www.example.com/",
-
-"filters": {
-
-"crawl": \[".\*"\],
-
-"process": \[".\*"\],
-
-"max_depth": 1,
-
-"scrape_params": {
-
-"user_agent_type": "desktop",
-
-},
-
-"output": {
-
-"type\_": "sitemap"
-
+    "url": "https://www.example.com/",
+    "filters": {
+        "crawl": [".*"],
+        "process": [".*"],
+        "max_depth": 1,
+    "scrape_params": {
+        "user_agent_type": "desktop",
+    },
+    "output": {
+        "type_": "sitemap"
+    }
 }
 
-}
-
-\# Error message
-
-File "\<stdin\>", line 1
-
-payload = {
-
-^
-
+# Error message
+  File "<stdin>", line 1
+    payload = {
+              ^
 SyntaxError: '{' was never closed
-
 ```
 
 At first glance, it looks like the payload was closed with braces, but
@@ -144,63 +111,37 @@ braces, which the interpreter, unfortunately, doesn’t show in its
 traceback. You can fix the error by closing the `“filters”` parameter:
 
 ```python
-
 payload = {
-
-"url": "https://www.amazon.com/",
-
-"filters": {
-
-"crawl": \[".\*"\],
-
-"process": \[".\*"\],
-
-"max_depth": 1
-
-}, \# Add the missing brace
-
-"scrape_params": {
-
-"user_agent_type": "desktop",
-
-},
-
-"output": {
-
-"type\_": "sitemap"
-
+    "url": "https://www.amazon.com/",
+    "filters": {
+        "crawl": [".*"],
+        "process": [".*"],
+        "max_depth": 1
+    }, # Add the missing brace
+    "scrape_params": {
+        "user_agent_type": "desktop",
+    },
+    "output": {
+        "type_": "sitemap"
+    }
 }
-
-}
-
 ```
 
 2.  Make sure you close a string with proper quotes. For example, if you started your string with a single quote ‘, then use a single quote again at the end of your string. The below code snippet illustrates this:
 
 ```python
-
 list_of_URLs = (
-
-'https://example.com/1',
-
-'https://example.com/2",
-
-'https://example.com/3
-
+    'https://example.com/1',
+    'https://example.com/2",
+    'https://example.com/3
 )
-
 print(list_of_URLs)
 
-\# Error message
-
-File "\<stdin\>", line 3
-
-'https://example.com/2",
-
-^
-
+# Error message
+  File "<stdin>", line 3
+    'https://example.com/2",
+    ^
 SyntaxError: unterminated string literal (detected at line 3)
-
 ```
 
 This example has two errors, but as you can see, the interpreter shows
@@ -213,19 +154,12 @@ quotation mark at all. The syntactically correct version would look like
 this:
 
 ```python
-
 list_of_URLs = (
-
-'https://example.com/1',
-
-'https://example.com/2',
-
-'https://example.com/3'
-
+    'https://example.com/1',
+    'https://example.com/2',
+    'https://example.com/3'
 )
-
 print(list_of_URLs)
-
 ```
 
 When the string content itself contains quotation marks, use single
@@ -233,21 +167,13 @@ When the string content itself contains quotation marks, use single
 string starts and ends. For instance:
 
 ```python
+print("In this example, there's a "quote within 'a quote'", which we separate with double and single quotes.")
 
-print("In this example, there's a "quote within 'a quote'", which we
-separate with double and single quotes.")
-
-\# Error message
-
-File "\<stdin\>", line 1
-
-print("In this example, there's a "quote within 'a quote'", which we
-separate with double and single quotes.")
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+# Error message
+  File "<stdin>", line 1
+    print("In this example, there's a "quote within 'a quote'", which we separate with double and single quotes.")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 SyntaxError: invalid syntax. Perhaps you forgot a comma?
-
 ```
 
 The interpreter shows where the error occurred, and you can see that the
@@ -256,38 +182,24 @@ error, you can wrap the whole string in triple quotes (either `’’’` or
 `“””`):
 
 ```python
-
-print("""In this example, there's a "quote within 'a quote'", which we
-specify with double and single quotes.""")
-
+print("""In this example, there's a "quote within 'a quote'", which we specify with double and single quotes.""")
 ```
 
-3.  When passing multiple arguments or values, make sure to separate them with commas. Consider the following web scraping example that encapsulates HTTP headers in the \`headers\` dictionary:
+3.  When passing multiple arguments or values, make sure to separate them with commas. Consider the following web scraping example that encapsulates HTTP headers in the `headers` dictionary:
 
 ```python
-
 headers = {
-
-'Accept': 'text/html',
-
-'Accept-Encoding': 'gzip, deflate, br',
-
-'Accept-Language': 'en-US, en;q=0.9'
-
-'Connection': 'keep-alive'
-
+    'Accept': 'text/html',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US, en;q=0.9'
+    'Connection': 'keep-alive'
 }
 
-\# Error message
-
-File "\<stdin\>", line 5
-
-'Connection': 'keep-alive'
-
-^
-
+# Error message
+  File "<stdin>", line 5
+    'Connection': 'keep-alive'
+                ^
 SyntaxError: invalid syntax
-
 ```
 
 Again, the interpreter fails to show precisely where the issue is, but
@@ -296,55 +208,33 @@ before where the caret points. You can fix the error by adding the
 missing comma after the `‘Accept-Language’` argument:
 
 ```python
-
 headers = {
-
-'Accept': 'text/html',
-
-'Accept-Encoding': 'gzip, deflate, br',
-
-'Accept-Language': 'en-US, en;q=0.9',
-
-'Connection': 'keep-alive'
-
+    'Accept': 'text/html',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US, en;q=0.9',
+    'Connection': 'keep-alive'
 }
-
 ```
 
 4.  Don’t forget to add a colon `:` at the end of a function or a compound statement, like `if`, `for`, `while`, `def`, etc. Let’s see an example of web scraping:
 
 ```python
-
 def extract_product_data()
+    for url in product_urls
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        title = soup.find("h1").text
+        price = soup.find("span", {"itemprop": "price"}).text
+        product_data.append({
+            "title": title,
+            "price": price,
+        })
 
-for url in product_urls
-
-response = requests.get(url, headers=headers)
-
-soup = BeautifulSoup(response.content, 'html.parser')
-
-title = soup.find("h1").text
-
-price = soup.find("span", {"itemprop": "price"}).text
-
-product_data.append({
-
-"title": title,
-
-"price": price,
-
-})
-
-\# Error message
-
-File "\<stdin\>", line 1
-
-def extract_product_data()
-
-^
-
+# Error message
+File "<stdin>", line 1
+    def extract_product_data()
+                              ^
 SyntaxError: expected ':'
-
 ```
 
 This time, the interpreter shows the exact place where the error
@@ -353,11 +243,8 @@ above example, the `def` function and the `for` loop are missing a
 colon, so we can update our code:
 
 ```python
-
 def extract_product_data():
-
-for url in product_urls:
-
+    for url in product_urls:
 ```
 
 ### Misspelled, misplaced, or missing Python keywords
@@ -365,41 +252,27 @@ for url in product_urls:
 1.  Make sure you’re not using the reserved Python keywords to name variables and functions. If you’re unsure whether a word is or isn’t a Python keyword, check it with the [<u>keyword module</u>](https://docs.python.org/3/library/keyword.html) in Python or look it up in the [<u>reserved keywords list</u>](https://docs.python.org/3.11/reference/lexical_analysis.html#keywords). Many IDEs, like PyCharm and VS Code, highlight the reserved keywords, which is extremely helpful. The code snippet below uses the reserved keyword \`pass\` to hold the password value, which causes the syntax error message:
 
 ```python
-
 user = 'username1'
-
 pass = 'password1'
 
-\# Error message
-
-File "\<stdin\>", line 2
-
-pass = 'password1'
-
-^
-
+# Error message
+  File "<stdin>", line 2
+    pass = 'password1'
+         ^
 SyntaxError: invalid syntax
-
 ```
 
 2.  Ensure that you haven’t misspelled a Python keyword. For instance:
 
 ```python
-
 import time
-
 from requests impotr Session
 
-\# Error message
-
-File "\<stdin\>", line 2
-
-from requests impotr Session
-
-^^^^^^
-
+# Error message
+  File "<stdin>", line 2
+    from requests impotr Session
+                  ^^^^^^
 SyntaxError: invalid syntax
-
 ```
 
 This code sample tries to import the `Session` object from the
@@ -409,21 +282,14 @@ as `impotr`, which raises an invalid syntax error.
 3.  Placing a Python keyword where it shouldn't be will also raise an error. Make sure that the Python keyword is used in the correct syntactical order and follows the rules specific to that keyword. Consider the following example:
 
 ```python
-
 import time
-
 import Session from requests
 
-\# Error message
-
-File "\<stdin\>", line 2
-
-import Session from requests
-
-^^^^
-
+# Error message
+  File "<stdin>", line 2
+    import Session from requests
+                   ^^^^
 SyntaxError: invalid syntax
-
 ```
 
 Here, we see an invalid syntax error because the Python keyword `from`
@@ -431,11 +297,8 @@ doesn’t follow the correct syntactical order. The fixed code should look
 like this:
 
 ```python
-
 import time
-
 from requests import Session
-
 ```
 
 ### Illegal characters in variable names
@@ -449,21 +312,14 @@ Python variables have to follow certain naming conventions:
 3.  Don’t start a variable with a number. Python will give you a syntax error:
 
 ```python
-
 response1 = requests.get(url)
-
 2response = requests.post(url)
 
-\# Error message
-
-File "\<stdin\>", line 2
-
-2response = requests.post(url)
-
-^
-
+# Error message
+  File "<stdin>", line 2
+    2response = requests.post(url)
+    ^
 SyntaxError: invalid decimal literal
-
 ```
 
 As you can see, the interpreter allows using numbers in variable names
@@ -476,41 +332,29 @@ but not when the variable names start with a number.
 1.  Remember that certain Python commands, like compound statements and functions, require indentation to define the scope of the command. So, ensure that such commands in your code are indented properly. For instance:
 
 ```python
-
 prices = (16.99, 13.68, 24.98, 14.99)
 
+
 def print_price():
-
-for price in prices:
-
-if price \< 15:
-
-print(price)
+    for price in prices:
+    if price < 15:
+        print(price)
 
 print_price()
 
-\# Error message 1
 
-File "\<stdin\>",line 6
+# Error message 1
+  File "<stdin>",line 6
+    if price < 15:
+    ^
+IndentationError: expected an indented block after 'for' statement on line 5
 
-if price \< 15:
 
-^
-
-IndentationError: expected an indented block after 'for' statement on
-line 5
-
-\# Error message 2
-
-File "\<stdin\>", line 7
-
-print(price)
-
-^
-
-IndentationError: expected an indented block after 'if' statement on
-line 6
-
+# Error message 2
+  File "<stdin>", line 7
+    print(price)
+    ^
+IndentationError: expected an indented block after 'if' statement on line 6
 ```
 
 The first error message indicates that the `if` statement requires an
@@ -520,37 +364,29 @@ the `if` statement and requires another indent. Fix the code with the
 correct indentation:
 
 ```python
-
 prices = (16.99, 13.68, 24.98, 14.99)
 
+
 def print_price():
-
-for price in prices:
-
-if price \< 15:
-
-print(price)
+    for price in prices:
+        if price < 15:
+            print(price)
 
 print_price()
-
 ```
 
 2.  Use consistent indentation marks: either all spaces or all tabs. Don’t mix them up, as it can reduce the readability of your code, in turn making it difficult to find the incorrect indentation just by looking at the code. Most Python IDEs highlight indentation errors before running the code, so you can reformat the file automatically to fix the indentation. Let’s take the above code sample and fix the first error message by adding a single space in front of the `if` statement:
 
 ```python
-
 prices = (16.99, 13.68, 24.98, 14.99)
 
+
 def print_price():
-
-for price in prices:
-
-if price \< 15:
-
-print(price)
+    for price in prices:
+     if price < 15:
+        print(price)
 
 print_price()
-
 ```
 
 The code works without errors and prints the correct result. However,
@@ -564,35 +400,23 @@ throughout the code.
 1.  Ensure you aren’t assigning values to functions or literals with the assignment operator `=`. You can only assign values to variables. Here’s an overview of some examples:
 
 ```python
-
 price = 10.98
-
 type(price) = float
 
-\# Error message
+# Error message
+  File "<stdin>", line 2
+    type(price) = float
+    ^^^^^^^^^^^
+SyntaxError: cannot assign to function call here. Maybe you meant '==' instead of '='?
 
-File "\<stdin\>", line 2
-
-type(price) = float
-
-^^^^^^^^^^^
-
-SyntaxError: cannot assign to function call here. Maybe you meant '=='
-instead of '='?
 
 "price" = 10.98
 
-\# Error message
-
-File "\<stdin\>", line 1
-
-"price" = 10.98
-
-^^^^^^^
-
-SyntaxError: cannot assign to literal here. Maybe you meant '==' instead
-of '='?
-
+# Error message
+  File "<stdin>", line 1
+    "price" = 10.98
+    ^^^^^^^
+SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
 ```
 
 In the first code sample, we want to check whether the value `10.98`
@@ -601,73 +425,48 @@ assignment operator can’t be used to assign a value to a function. The
 correct way to accomplish this is with one the following code samples:
 
 ```python
-
 price = 10.98
-
 print(type(price))
 
-\# or
+# or
 
 price = 10.98
-
 is_float = type(price) == float
-
 print(is_float)
-
 ```
 
 2.  Assign values in a dictionary with a colon `:` and not an assignment operator `=`. Let’s take a previous code sample and modify it to incorrectly use the assignment operator instead of colons:
 
 ```python
-
 headers = {
-
-'Accept' = 'text/html',
-
-'Accept-Encoding' = 'gzip, deflate, br',
-
-'Accept-Language' = 'en-US, en;q=0.9'
-
-'Connection' = 'keep-alive'
-
+    'Accept' = 'text/html',
+    'Accept-Encoding' = 'gzip, deflate, br',
+    'Accept-Language' = 'en-US, en;q=0.9'
+    'Connection' = 'keep-alive'
 }
 
-\# Error message
 
-File "\<stdin\>", line 2
-
-'Accept' = 'text/html',
-
-^^^^^^^^
-
-SyntaxError: cannot assign to literal here. Maybe you meant '==' instead
-of '='?
-
+# Error message
+  File "<stdin>", line 2
+    'Accept' = 'text/html',
+    ^^^^^^^^
+SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
 ```
 
 3.  Use `==` when comparing objects based on their values. For instance:
 
 ```python
-
 price_1 = 200.99
-
 price_2 = 200.98
 
 compare = (price_1 = price_2)
-
 print(compare)
 
-\# Error message
-
-File "\<stdin\>", line 4
-
-compare = (price_1 = price_2)
-
-^^^^^^^^^^^^^^^^^
-
-SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of
-'='?
-
+# Error message
+  File "<stdin>", line 4
+    compare = (price_1 = price_2)
+               ^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
 ```
 
 You can fix the issue by using the double equal sign `==` between `price_1` and `price_2` instead of `=`, which will print the
