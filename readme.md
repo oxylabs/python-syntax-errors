@@ -3,8 +3,7 @@
 This article examines how to read and fix Python syntax errors with the
 help of practical web scraping examples.
 
-For a detailed explanation, see our [<u>blog
-post</u>](https://oxylabs.io/blog/python-syntax-errors).
+For a detailed explanation, see our [<u>blog post</u>](https://oxylabs.io/blog/python-syntax-errors).
 
 ### How to read Python syntax errors
 
