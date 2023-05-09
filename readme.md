@@ -19,7 +19,7 @@ Knowing how to read Python error messages goes a long way to save both
 time and effort. So let’s examine a Python web scraping code sample that
 raises two syntax errors:
 
-\`\`\`python
+```python
 
 prices = {"price1": 9.99, "price2": 13.48 "price3": 10.99, "price4":
 15.01}
@@ -38,11 +38,11 @@ if not price_found:
 
 print("There are no prices between \$10 and \$14.99")
 
-\`\`\`
+```
 
-In this example, we have a dictionary of different \`prices\`. We use a
-\`for\` loop to find and print the prices between \$10 and \$14.99. The
-\`price_found\` variable uses a boolean value to determine whether such
+In this example, we have a dictionary of different `prices`. We use a
+`for` loop to find and print the prices between $10 and $14.99. The
+`price_found` variable uses a boolean value to determine whether such
 a price was found in the dictionary.
 
 When executed, Python points to the first invalid syntax error it came
@@ -53,61 +53,51 @@ Information in the yellow box helps us determine the location of the
 error, and the green box includes more details about the error itself.
 The full message can be separated into four main elements:
 
-1.  **The path directory** and **name** of the file where the error
-    > occurred;
+1.  **The path directory** and **name** of the file where the error occurred;
 
-2.  **The line number** and the **faulty code line** where the error was
-    > first encountered;
+2.  **The line number** and the **faulty code line** where the error was first encountered;
 
 3.  **The carets (^)** that pinpoint the place of the error;
 
-4.  **The error message** determines the error type, followed by
-    > additional information that may help fix the problem.
+4.  **The error message** determines the error type, followed by additional information that may help fix the problem.
 
 The code sample produced a syntax error found in the first line of code
-– the \`prices\` dictionary. The carets indicate that the error occurred
-between \`“price2”: 13.48\` and \`“price3”: 10.99\`, and the invalid
+– the `prices` dictionary. The carets indicate that the error occurred
+between `“price2”: 13.48` and `“price3”: 10.99`, and the invalid
 syntax message says that perhaps we forgot to add a comma between the
 items in our dictionary. That’s exactly it! The Python interpreter
 suggested the correct solution, so let’s update the code:
 
-\`\`\`python
+```python
 
 prices = {"price1": 9.99, "price2": 13.48, "price3": 10.99, "price4":
 15.01}
 
-\`\`\`
+```
 
 Now, rerun the code to see what’s the second syntax error:
 
 This time, the carets fail to pinpoint the exact location of the error,
-and the \`SyntaxError\` message doesn’t include additional information
+and the `SyntaxError` message doesn’t include additional information
 about the possible solution. In such cases, the rule of thumb would be
 to examine the code that comes just before the carets. In the code
 sample, the syntax error is raised because there’s a missing comma
-between the variables \`key\` and \`value\` in the \`for\` loop. The
-syntactically correct code line should look like this:
+between the variables `key\` and `value` in the `for` loop. The
+syntactically correct code ine should look like this:
 
-\`\`\`python
+```python
 
 for key, value in prices.items():
 
-\`\`\`
+```
 
 ## How to fix syntax errors
 
 ### Misplaced, missing, or mismatched punctuation
 
-1.  Ensure that parentheses \`()\`, brackets \`\[\]\`, and braces \`{}\`
-    > are properly closed. When left unclosed, the Python interpreter
-    > treats everything following the first parenthesis, bracket, or
-    > brace as a single statement. Take a look at this web scraping code
-    > sample that sends a set of
-    > [<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping)
-    > instructions to our [<u>Web Crawler
-    > tool</u>](https://oxylabs.io/features/web-crawler):
+1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends a set of[<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping) instructions to our [<u>Web Crawler tool</u>](https://oxylabs.io/features/web-crawler):
 
-\`\`\`python
+```python
 
 payload = {
 
@@ -145,15 +135,15 @@ payload = {
 
 SyntaxError: '{' was never closed
 
-\`\`\`
+```
 
 At first glance, it looks like the payload was closed with braces, but
 the Python interpreter raises a syntax error that says otherwise. In
-this particular case, the \`“filters”\` parameter isn’t closed with
+this particular case, the `“filters”` parameter isn’t closed with
 braces, which the interpreter, unfortunately, doesn’t show in its
-traceback. You can fix the error by closing the \`“filters”\` parameter:
+traceback. You can fix the error by closing the `“filters”` parameter:
 
-\`\`\`python
+```python
 
 payload = {
 
@@ -183,14 +173,11 @@ payload = {
 
 }
 
-\`\`\`
+```
 
-2.  Make sure you close a string with proper quotes. For example, if you
-    > started your string with a single quote ‘, then use a single quote
-    > again at the end of your string. The below code snippet
-    > illustrates this:
+2.  Make sure you close a string with proper quotes. For example, if you started your string with a single quote ‘, then use a single quote again at the end of your string. The below code snippet illustrates this:
 
-\`\`\`python
+```python
 
 list_of_URLs = (
 
@@ -214,7 +201,7 @@ File "\<stdin\>", line 3
 
 SyntaxError: unterminated string literal (detected at line 3)
 
-\`\`\`
+```
 
 This example has two errors, but as you can see, the interpreter shows
 only the first syntax error. It pinpoints the issue precisely, which is
@@ -225,7 +212,7 @@ The second error is in the third example URL, which isn’t closed with a
 quotation mark at all. The syntactically correct version would look like
 this:
 
-\`\`\`python
+```python
 
 list_of_URLs = (
 
@@ -239,13 +226,13 @@ list_of_URLs = (
 
 print(list_of_URLs)
 
-\`\`\`
+```
 
 When the string content itself contains quotation marks, use single
-\`‘\`, double \`“\`, and/or triple \`‘’’\` quotes to specify where the
+`‘`, double `“`, and/or triple `‘’’` quotes to specify where the
 string starts and ends. For instance:
 
-\`\`\`python
+```python
 
 print("In this example, there's a "quote within 'a quote'", which we
 separate with double and single quotes.")
@@ -261,25 +248,23 @@ separate with double and single quotes.")
 
 SyntaxError: invalid syntax. Perhaps you forgot a comma?
 
-\`\`\`
+```
 
 The interpreter shows where the error occurred, and you can see that the
 carets end within the second double quotation mark. To fix the syntax
-error, you can wrap the whole string in triple quotes (either \`’’’\` or
-\`“””\`):
+error, you can wrap the whole string in triple quotes (either `’’’` or
+`“””`):
 
-\`\`\`python
+```python
 
 print("""In this example, there's a "quote within 'a quote'", which we
 specify with double and single quotes.""")
 
-\`\`\`
+```
 
-3.  When passing multiple arguments or values, make sure to separate
-    > them with commas. Consider the following web scraping example that
-    > encapsulates HTTP headers in the \`headers\` dictionary:
+3.  When passing multiple arguments or values, make sure to separate them with commas. Consider the following web scraping example that encapsulates HTTP headers in the \`headers\` dictionary:
 
-\`\`\`python
+```python
 
 headers = {
 
@@ -303,14 +288,14 @@ File "\<stdin\>", line 5
 
 SyntaxError: invalid syntax
 
-\`\`\`
+```
 
 Again, the interpreter fails to show precisely where the issue is, but
 as a rule of thumb, you can expect the actual invalid syntax error to be
 before where the caret points. You can fix the error by adding the
-missing comma after the \`‘Accept-Language’\` argument:
+missing comma after the `‘Accept-Language’` argument:
 
-\`\`\`python
+```python
 
 headers = {
 
@@ -324,13 +309,11 @@ headers = {
 
 }
 
-\`\`\`
+```
 
-4.  Don’t forget to add a colon : at the end of a function or a compound
-    > statement, like \`if\`, \`for\`, \`while\`, \`def\`, etc. Let’s
-    > see an example of web scraping:
+4.  Don’t forget to add a colon `:` at the end of a function or a compound statement, like `if`, `for`, `while`, `def`, etc. Let’s see an example of web scraping:
 
-\`\`\`python
+```python
 
 def extract_product_data()
 
@@ -362,35 +345,26 @@ def extract_product_data()
 
 SyntaxError: expected ':'
 
-\`\`\`
+```
 
 This time, the interpreter shows the exact place where the error
 occurred and hints as to what could be done to fix the issue. In the
-above example, the \`def\` function and the \`for\` loop are missing a
+above example, the `def` function and the `for` loop are missing a
 colon, so we can update our code:
 
-\`\`\`python
+```python
 
 def extract_product_data():
 
 for url in product_urls:
 
-\`\`\`
+```
 
 ### Misspelled, misplaced, or missing Python keywords
 
-1.  Make sure you’re not using the reserved Python keywords to name
-    > variables and functions. If you’re unsure whether a word is or
-    > isn’t a Python keyword, check it with the [<u>keyword
-    > module</u>](https://docs.python.org/3/library/keyword.html) in
-    > Python or look it up in the [<u>reserved keywords
-    > list</u>](https://docs.python.org/3.11/reference/lexical_analysis.html#keywords).
-    > Many IDEs, like PyCharm and VS Code, highlight the reserved
-    > keywords, which is extremely helpful. The code snippet below uses
-    > the reserved keyword \`pass\` to hold the password value, which
-    > causes the syntax error message:
+1.  Make sure you’re not using the reserved Python keywords to name variables and functions. If you’re unsure whether a word is or isn’t a Python keyword, check it with the [<u>keyword module</u>](https://docs.python.org/3/library/keyword.html) in Python or look it up in the [<u>reserved keywords list</u>](https://docs.python.org/3.11/reference/lexical_analysis.html#keywords). Many IDEs, like PyCharm and VS Code, highlight the reserved keywords, which is extremely helpful. The code snippet below uses the reserved keyword \`pass\` to hold the password value, which causes the syntax error message:
 
-\`\`\`python
+```python
 
 user = 'username1'
 
@@ -406,11 +380,11 @@ pass = 'password1'
 
 SyntaxError: invalid syntax
 
-\`\`\`
+```
 
 2.  Ensure that you haven’t misspelled a Python keyword. For instance:
 
-\`\`\`python
+```python
 
 import time
 
@@ -426,18 +400,15 @@ from requests impotr Session
 
 SyntaxError: invalid syntax
 
-\`\`\`
+```
 
-This code sample tries to import the \`Session\` object from the
-requests library. However, the Python keyword \`import\` is misspelled
-as \`impotr\`, which raises an invalid syntax error.
+This code sample tries to import the `Session` object from the
+requests library. However, the Python keyword `import` is misspelled
+as `impotr`, which raises an invalid syntax error.
 
-3.  Placing a Python keyword where it shouldn't be will also raise an
-    > error. Make sure that the Python keyword is used in the correct
-    > syntactical order and follows the rules specific to that keyword.
-    > Consider the following example:
+3.  Placing a Python keyword where it shouldn't be will also raise an error. Make sure that the Python keyword is used in the correct syntactical order and follows the rules specific to that keyword. Consider the following example:
 
-\`\`\`python
+```python
 
 import time
 
@@ -453,37 +424,31 @@ import Session from requests
 
 SyntaxError: invalid syntax
 
-\`\`\`
+```
 
-Here, we see an invalid syntax error because the Python keyword \`from\`
+Here, we see an invalid syntax error because the Python keyword `from`
 doesn’t follow the correct syntactical order. The fixed code should look
 like this:
 
-\`\`\`python
+```python
 
 import time
 
 from requests import Session
 
-\`\`\`
+```
 
 ### Illegal characters in variable names
 
 Python variables have to follow certain naming conventions:
 
-1.  You can’t use blank spaces in variable names. The best solution is
-    > to use the underscore character. For example, if you want a
-    > variable named “two words”, it should be written as \`two_words\`,
-    > \`twowords\`, \`TwoWords\`, \`twoWords\`, or \`Twowords\`.
+1.  You can’t use blank spaces in variable names. The best solution is to use the underscore character. For example, if you want a variable named “two words”, it should be written as `two_words`, `twowords`, `TwoWords`, `twoWords`, or `Twowords`.
 
-2.  Variables are case-sensitive, meaning \`example1\` and \`Example1\`
-    > are two different variables. Take this into account when creating
-    > variables and calling them later in your code.
+2.  Variables are case-sensitive, meaning `example1` and `Example1` are two different variables. Take this into account when creating variables and calling them later in your code.
 
-3.  Don’t start a variable with a number. Python will give you a syntax
-    > error:
+3.  Don’t start a variable with a number. Python will give you a syntax error:
 
-\`\`\`python
+```python
 
 response1 = requests.get(url)
 
@@ -499,22 +464,18 @@ File "\<stdin\>", line 2
 
 SyntaxError: invalid decimal literal
 
-\`\`\`
+```
 
 As you can see, the interpreter allows using numbers in variable names
 but not when the variable names start with a number.
 
-4.  Variable names can only use letters, numbers, and underscores. Any
-    > other characters used in the name will produce a syntax error.
+4.  Variable names can only use letters, numbers, and underscores. Any other characters used in the name will produce a syntax error.
 
 ### Incorrect indentation
 
-1.  Remember that certain Python commands, like compound statements and
-    > functions, require indentation to define the scope of the command.
-    > So, ensure that such commands in your code are indented properly.
-    > For instance:
+1.  Remember that certain Python commands, like compound statements and functions, require indentation to define the scope of the command. So, ensure that such commands in your code are indented properly. For instance:
 
-\`\`\`python
+```python
 
 prices = (16.99, 13.68, 24.98, 14.99)
 
@@ -550,15 +511,15 @@ print(price)
 IndentationError: expected an indented block after 'if' statement on
 line 6
 
-\`\`\`
+```
 
-The first error message indicates that the \`if\` statement requires an
+The first error message indicates that the `if` statement requires an
 indented block. After fixing that and running the code, we encounter the
-second error message that tells us the \`print\` statement is outside
-the \`if\` statement and requires another indent. Fix the code with the
+second error message that tells us the `print` statement is outside
+the `if` statement and requires another indent. Fix the code with the
 correct indentation:
 
-\`\`\`python
+```python
 
 prices = (16.99, 13.68, 24.98, 14.99)
 
@@ -572,19 +533,11 @@ print(price)
 
 print_price()
 
-\`\`\`
+```
 
-2.  Use consistent indentation marks: either all spaces or all tabs.
-    > Don’t mix them up, as it can reduce the readability of your code,
-    > in turn making it difficult to find the incorrect indentation just
-    > by looking at the code. Most Python IDEs highlight indentation
-    > errors before running the code, so you can reformat the file
-    > automatically to fix the indentation.
+2.  Use consistent indentation marks: either all spaces or all tabs. Don’t mix them up, as it can reduce the readability of your code, in turn making it difficult to find the incorrect indentation just by looking at the code. Most Python IDEs highlight indentation errors before running the code, so you can reformat the file automatically to fix the indentation. Let’s take the above code sample and fix the first error message by adding a single space in front of the `if` statement:
 
-> Let’s take the above code sample and fix the first error message by
-> adding a single space in front of the \`if\` statement:
-
-\`\`\`python
+```python
 
 prices = (16.99, 13.68, 24.98, 14.99)
 
@@ -598,7 +551,7 @@ print(price)
 
 print_price()
 
-\`\`\`
+```
 
 The code works without errors and prints the correct result. However,
 you can see how the mix of spaces and tabs makes the code a little
@@ -608,11 +561,9 @@ throughout the code.
 
 ### Incorrect use of the assignment operator (=)
 
-1.  Ensure you aren’t assigning values to functions or literals with the
-    > assignment operator \`=\`. You can only assign values to
-    > variables. Here’s an overview of some examples:
+1.  Ensure you aren’t assigning values to functions or literals with the assignment operator `=`. You can only assign values to variables. Here’s an overview of some examples:
 
-\`\`\`python
+```python
 
 price = 10.98
 
@@ -642,14 +593,14 @@ File "\<stdin\>", line 1
 SyntaxError: cannot assign to literal here. Maybe you meant '==' instead
 of '='?
 
-\`\`\`
+```
 
-In the first code sample, we want to check whether the value \`10.98\`
+In the first code sample, we want to check whether the value `10.98`
 is a float type. The Python interpreter raises an error since the
 assignment operator can’t be used to assign a value to a function. The
 correct way to accomplish this is with one the following code samples:
 
-\`\`\`python
+```python
 
 price = 10.98
 
@@ -663,14 +614,11 @@ is_float = type(price) == float
 
 print(is_float)
 
-\`\`\`
+```
 
-2.  Assign values in a dictionary with a colon \`:\` and not an
-    > assignment operator \`=\`. Let’s take a previous code sample and
-    > modify it to incorrectly use the assignment operator instead of
-    > colons:
+2.  Assign values in a dictionary with a colon `:` and not an assignment operator `=`. Let’s take a previous code sample and modify it to incorrectly use the assignment operator instead of colons:
 
-\`\`\`python
+```python
 
 headers = {
 
@@ -695,12 +643,11 @@ File "\<stdin\>", line 2
 SyntaxError: cannot assign to literal here. Maybe you meant '==' instead
 of '='?
 
-\`\`\`
+```
 
-3.  Use \`==\` when comparing objects based on their values. For
-    > instance:
+3.  Use `==` when comparing objects based on their values. For instance:
 
-\`\`\`python
+```python
 
 price_1 = 200.99
 
@@ -721,13 +668,9 @@ compare = (price_1 = price_2)
 SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of
 '='?
 
-\`\`\`
+```
 
-You can fix the issue by using the double equal sign \`==\` between
-\`price_1\` and \`price_2\` instead of \`=\`, which will print the
+You can fix the issue by using the double equal sign `==` between `price_1` and `price_2` instead of `=`, which will print the
 correct result.
 
-Check out our [<u>blog
-post</u>](https://oxylabs.io/blog/python-syntax-errors) to find out more
-about Python syntax errors. There, you’ll find an explanation of syntax
-errors, their common causes, and some tips for avoiding them.
+Check out our [<u>blog post</u>](https://oxylabs.io/blog/python-syntax-errors) to find out more about Python syntax errors. There, you’ll find an explanation of syntax errors, their common causes, and some tips for avoiding them.
