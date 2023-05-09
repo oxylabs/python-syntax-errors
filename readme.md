@@ -5,7 +5,7 @@ help of practical web scraping examples.
 
 For a detailed explanation, see our [<u>blog post</u>](https://oxylabs.io/blog/python-syntax-errors).
 
-### How to read Python syntax errors
+## How to read Python syntax errors
 
 When you get an error message, Python tries to point to the root cause
 of the error. Sometimes, the message tells exactly what’s the problem,
