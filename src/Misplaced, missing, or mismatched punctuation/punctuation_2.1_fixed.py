@@ -1,0 +1,1 @@
+print("""In this example, there's a "quote within 'a quote'", which we specify with double and single quotes.""")
