@@ -81,7 +81,7 @@ for key, value in prices.items():
 
 ### Misplaced, missing, or mismatched punctuation
 
-1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends a set of[<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping) instructions to our [<u>Web Crawler tool</u>](https://oxylabs.io/features/web-crawler):
+1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends a set of [<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping) instructions to our [<u>Web Crawler tool</u>](https://oxylabs.io/features/web-crawler):
 
 ```python
 payload = {
