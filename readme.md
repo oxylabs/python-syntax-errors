@@ -1,5 +1,14 @@
 # Python Syntax Errors: Common Mistakes and How to Fix Them
 
+  - [How to read Python syntax errors](#how-to-read-python-syntax-errors)
+  - [How to fix syntax errors](#how-to-fix-syntax-errors)
+    * [Misplaced, missing, or mismatched punctuation](#misplaced-missing-or-mismatched-punctuation)
+    * [Misspelled, misplaced, or missing Python keywords](#misspelled-misplaced-or-missing-python-keywords)
+    * [Illegal characters in variable names](#illegal-characters-in-variable-names)
+    * [Incorrect indentation](#incorrect-indentation)
+    * [Incorrect use of the assignment operator (=)](#incorrect-use-of-the-assignment-operator)
+
+
 This article examines how to read and fix Python syntax errors with the
 help of practical web scraping examples.
 
@@ -396,7 +405,7 @@ harder to read. Using this method can bring about unnecessary syntax
 errors when they can be avoided by sticking to either spaces or tabs
 throughout the code.
 
-### Incorrect use of the assignment operator (=)
+### Incorrect use of the assignment operator
 
 1.  Ensure you aren’t assigning values to functions or literals with the assignment operator `=`. You can only assign values to variables. Here’s an overview of some examples:
 
