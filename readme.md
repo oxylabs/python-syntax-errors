@@ -94,22 +94,23 @@ for key, value in prices.items():
 
 ### Misplaced, missing, or mismatched punctuation
 
-1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends a set of [<u>crawling</u>](https://oxylabs.io/blog/crawling-vs-scraping) instructions to our [<u>Web Crawler tool</u>](https://oxylabs.io/features/web-crawler):
+1.  Ensure that parentheses `()`, brackets `[]`, and braces `{}` are properly closed. When left unclosed, the Python interpreter treats everything following the first parenthesis, bracket, or brace as a single statement. Take a look at this web scraping code sample that sends parsing instructions to our [web scraping tool](https://oxylabs.io/products/scraper-api/web):
 
 ```python
 payload = {
-    "url": "https://www.example.com/",
-    "filters": {
-        "crawl": [".*"],
-        "process": [".*"],
-        "max_depth": 1,
-    "scrape_params": {
-        "user_agent_type": "desktop",
-    },
-    "output": {
-        "type_": "sitemap"
+    "source": "universal",
+    "url": "https://sandbox.oxylabs.io/products/1",
+    "parse": True,
+    "parsing_instructions": {
+        "title": {
+            "_fns": [
+                {
+                    "_fn": "css_one",
+                    "_args": ["h2"]
+                }
+            ]
+        }
     }
-}
 
 # Error message
   File "<stdin>", line 1
@@ -118,27 +119,25 @@ payload = {
 SyntaxError: '{' was never closed
 ```
 
-At first glance, it looks like the payload was closed with braces, but
-the Python interpreter raises a syntax error that says otherwise. In
-this particular case, the `“filters”` parameter isn’t closed with
-braces, which the interpreter, unfortunately, doesn’t show in its
-traceback. You can fix the error by closing the `“filters”` parameter:
+At first glance, it may look like the `payload` was closed with braces, but the Python interpreter raises a syntax error that says otherwise. You can fix the error by closing the `payload`:
+
 
 ```python
 payload = {
-    "url": "https://www.amazon.com/",
-    "filters": {
-        "crawl": [".*"],
-        "process": [".*"],
-        "max_depth": 1
-    }, # Add the missing brace
-    "scrape_params": {
-        "user_agent_type": "desktop",
-    },
-    "output": {
-        "type_": "sitemap"
+    "source": "universal",
+    "url": "https://sandbox.oxylabs.io/products/1",
+    "parse": True,
+    "parsing_instructions": {
+        "title": {
+            "_fns": [
+                {
+                    "_fn": "css_one",
+                    "_args": ["h2"]
+                }
+            ]
+        }
     }
-}
+} # Add the missing brace
 ```
 
 2.  Make sure you close a string with proper quotes. For example, if you started your string with a single quote ‘, then use a single quote again at the end of your string. The below code snippet illustrates this:
