@@ -1,14 +1,15 @@
 payload = {
-    "url": "https://www.amazon.com/",
-    "filters": {
-        "crawl": [".*"],
-        "process": [".*"],
-        "max_depth": 1
-    }, # Add the missing brace
-    "scrape_params": {
-        "user_agent_type": "desktop",
-    },
-    "output": {
-        "type_": "sitemap"
+    "source": "universal",
+    "url": "https://sandbox.oxylabs.io/products/1",
+    "parse": True,
+    "parsing_instructions": {
+        "title": {
+            "_fns": [
+                {
+                    "_fn": "css_one",
+                    "_args": ["h2"]
+                }
+            ]
+        }
     }
-}
+} # Add the missing brace
